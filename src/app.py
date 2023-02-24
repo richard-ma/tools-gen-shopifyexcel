@@ -53,12 +53,12 @@ class App:
 
     def readTxtToList(self, filename, encoding=None):
         if encoding is None:
-            self.encoding = self._char_detect(filename)
+            self._char_detect(filename)
         else:
             self.encoding = encoding
 
         data = list()
-        with open(filename, 'r+', encoding=self.encoding, errors='ignore') as f:
+        with open(filename, 'r+', encoding=self.encoding) as f:
             for row in f.readlines():
                 # remove \n and \r
                 data.append(row.replace('\n', '').replace('\r', ''))
@@ -66,13 +66,13 @@ class App:
 
     def readCsvToDict(self, filename, encoding=None):
         if encoding is None:
-            self.encoding = self._char_detect(filename)
+            self._char_detect(filename)
         else:
             self.encoding = encoding
 
 
         data = list()
-        with open(filename, 'r+', encoding=self.encoding, errors='ignore') as f:
+        with open(filename, 'r+', encoding=self.encoding) as f:
             reader = csv.DictReader(f)
             for row in reader:
                 data.append(row)
