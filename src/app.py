@@ -58,7 +58,7 @@ class App:
             self.encoding = encoding
 
         data = list()
-        with open(filename, 'r+', encoding=self.encoding) as f:
+        with open(filename, 'r+', encoding=self.encoding, errors='ignore') as f:
             for row in f.readlines():
                 # remove \n and \r
                 data.append(row.replace('\n', '').replace('\r', ''))
@@ -72,7 +72,7 @@ class App:
 
 
         data = list()
-        with open(filename, 'r+', encoding=self.encoding) as f:
+        with open(filename, 'r+', encoding=self.encoding, errors='ignore') as f:
             reader = csv.DictReader(f)
             for row in reader:
                 data.append(row)
